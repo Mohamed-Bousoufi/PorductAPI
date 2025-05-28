@@ -29,6 +29,7 @@ public class Product {
     private String description;
 
     @Positive()
+    @NotNull(message = "Price cannot be null")
     private Double price;
 
 
