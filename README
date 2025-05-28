@@ -1,112 +1,52 @@
-<head>
-  <meta charset="UTF-8">
-  <title>Product Management API Documentation</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      line-height: 1.6;
-      max-width: 900px;
-      margin: auto;
-      padding: 20px;
-      background: #fdfdfd;
-    }
-    h1, h2, h3 {
-      color: #333;
-    }
-    code {
-      background: #eee;
-      padding: 2px 4px;
-      font-size: 90%;
-    }
-    pre {
-      background: #f4f4f4;
-      padding: 10px;
-      overflow-x: auto;
-    }
-    table {
-      border-collapse: collapse;
-      width: 100%;
-      margin-top: 10px;
-    }
-    th, td {
-      border: 1px solid #ccc;
-      padding: 8px;
-    }
-    th {
-      background-color: #f8f8f8;
-    }
-  </style>
-</head>
-<body>
-  <h1>🛍️ Product Management REST API</h1>
-  <p>This is a simple Spring Boot REST API for managing products. It supports CRUD operations and uses an H2 in-memory database, making it lightweight and ideal for development or demonstration purposes.</p>
+# 🛍️ Product Management REST API
 
-  <h2>🚀 Features</h2>
-  <ul>
-    <li>Add new products with validation</li>
-    <li>Fetch all products or by name</li>
-    <li>Update product details</li>
-    <li>Delete a product by name</li>
-    <li>Input validation and exception handling</li>
-    <li>In-memory H2 database (no setup needed)</li>
-    <li>RESTful endpoints</li>
-  </ul>
+This is a Spring Boot REST API for managing products using an in-memory H2 database.
 
-  <h2>🧾 Product Structure</h2>
-  <table>
-    <tr><th>Field</th><th>Type</th><th>Constraints</th></tr>
-    <tr><td><code>id</code></td><td>Long</td><td>Auto-generated</td></tr>
-    <tr><td><code>name</code></td><td>String</td><td>Required, not blank</td></tr>
-    <tr><td><code>description</code></td><td>String</td><td>4–255 characters</td></tr>
-    <tr><td><code>price</code></td><td>Double</td><td>Must be positive, not null</td></tr>
-  </table>
+---
 
-  <h2>📬 API Endpoints</h2>
-  <p>Base URL: <code>/api</code></p>
-  <table>
-    <tr><th>Method</th><th>Endpoint</th><th>Description</th></tr>
-    <tr><td>GET</td><td><code>/all</code></td><td>Get all products</td></tr>
-    <tr><td>GET</td><td><code>/?name=productName</code></td><td>Get product by name</td></tr>
-    <tr><td>POST</td><td><code>/createProduct</code></td><td>Create a new product</td></tr>
-    <tr><td>PUT</td><td><code>/updateProduct?name=productName</code></td><td>Update product by name</td></tr>
-    <tr><td>DELETE</td><td><code>/deleteProduct?name=productName</code></td><td>Delete product by name</td></tr>
-  </table>
+## 🚀 Features
 
-  <h2>🛠️ Example: Create a Product</h2>
-  <p><strong>POST</strong> <code>/api/createProduct</code></p>
-  <pre>{
+- Add new products with validation
+- Fetch all products or by name
+- Update product details
+- Delete products
+- Input validation and error handling
+- Uses H2 database for simple local testing
+
+---
+
+## 📦 Product Structure
+
+| Field        | Type   | Constraints                                 |
+|--------------|--------|---------------------------------------------|
+| `id`         | Long   | Auto-generated                              |
+| `name`       | String | Required, not blank                         |
+| `description`| String | Required, 4–255 characters                  |
+| `price`      | Double | Must be positive and not null              |
+
+---
+
+## 📬 API Endpoints
+
+Base URL: `/api`
+
+| Method | Endpoint                | Description                     |
+|--------|-------------------------|---------------------------------|
+| GET    | `/all`                  | Fetch all products              |
+| GET    | `/?name=productName`    | Get a product by name           |
+| POST   | `/createProduct`        | Create a new product            |
+| PUT    | `/updateProduct?name=x` | Update a product by name        |
+| DELETE | `/deleteProduct?name=x` | Delete a product by name        |
+
+---
+
+## 🧪 Example Request: Create a Product
+
+**POST** `/api/createProduct`
+
+```json
+{
   "name": "Laptop",
-  "description": "A powerful gaming laptop",
-  "price": 1200.0
-}</pre>
-
-  <h2>⚠️ Error Handling</h2>
-  <ul>
-    <li>Validation errors (e.g. blank name, invalid price)</li>
-    <li>Duplicate product names</li>
-    <li>Product not found</li>
-    <li>General server exceptions</li>
-  </ul>
-
-  <h2>🧪 H2 Database Console</h2>
-  <p>Access at: <a href="http://localhost:8080/h2-console">http://localhost:8080/h2-console</a></p>
-  <ul>
-    <li><strong>JDBC URL</strong>: <code>jdbc:h2:mem:testdb</code></li>
-    <li><strong>Username</strong>: <code>sa</code></li>
-    <li><strong>Password</strong>: (leave blank)</li>
-  </ul>
-
-  <h2>📚 Technologies Used</h2>
-  <ul>
-    <li>Java 17+</li>
-    <li>Spring Boot</li>
-    <li>Spring Data JPA</li>
-    <li>H2 In-memory database</li>
-    <li>REST API principles</li>
-  </ul>
-
-  <h2>🛡️ Security Note</h2>
-  <p>This project is meant for development and learning. Avoid exposing the H2 console in public or production environments.</p>
-
-</body>
-</html>
+  "description": "High-performance laptop",
+  "price": 999.99
+}
