@@ -4,6 +4,29 @@ This is a Spring Boot REST API for managing products using an in-memory H2 datab
 
 ---
 
+## 📦 Prerequisites
+
+Make sure the following tools are installed:
+
+| Tool             | Version     | Purpose                          |
+|------------------|-------------|----------------------------------|
+| Java JDK         | 17 or later | Required to run Spring Boot      |
+| Maven            | 3.8+        | Builds and runs the project      |
+
+
+## Build the project
+
+
+```script 
+      mvn clean install
+```
+
+## Start the application
+
+```script
+    mvn spring-boot:run
+``````
+
 ## 🚀 Features
 
 - Add new products with validation
